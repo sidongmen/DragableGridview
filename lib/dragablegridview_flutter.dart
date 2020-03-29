@@ -42,7 +42,7 @@ class DragAbleGridView <T extends DragAbleGridViewBin> extends StatefulWidget{
     this.editChangeListener,
     this.isOpenDragAble:false,
     this.animationDuration:300,
-    this.longPressDuration:800,
+    this.longPressDuration:300,
     this.deleteIcon,
     this.deleteIconClickListener,
   }) :assert(
