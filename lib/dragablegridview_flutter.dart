@@ -227,7 +227,7 @@ class  DragAbleGridViewState <T extends DragAbleGridViewBin> extends State<DragA
   @override
   Widget build(BuildContext context) {
     return new GridView.builder(
-        physics: widget.scrollable != true ? NeverScrollableScrollPhysics() : ScrollPhysics(),
+        physics: widget.scrollable == false ? NeverScrollableScrollPhysics() : ScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemCount: widget.itemBins.length,
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
