@@ -18,6 +18,7 @@ class DragAbleGridView <T extends DragAbleGridViewBin> extends StatefulWidget{
   final double crossAxisSpacing;
   final double mainAxisSpacing;
   //cross-axis to the main-axis
+  final bool scrollable;
   final double childAspectRatio;
   ///编辑开关控制器，可通过点击按钮触发编辑
   final EditSwitchController editSwitchController;
@@ -35,6 +36,7 @@ class DragAbleGridView <T extends DragAbleGridViewBin> extends StatefulWidget{
     @required this.child,
     @required this.itemBins,
     this.crossAxisCount:4,
+    this.scrollable:true,
     this.childAspectRatio:1.0,
     this.mainAxisSpacing:0.0,
     this.crossAxisSpacing:0.0,
@@ -58,7 +60,6 @@ class DragAbleGridView <T extends DragAbleGridViewBin> extends StatefulWidget{
 
 class  DragAbleGridViewState <T extends DragAbleGridViewBin> extends State<DragAbleGridView> with SingleTickerProviderStateMixin implements DragAbleViewListener{
 
-  var physics=new ScrollPhysics();
   double screenWidth;
   double screenHeight;
   ///在拖动过程中Item position 的位置记录
@@ -226,7 +227,7 @@ class  DragAbleGridViewState <T extends DragAbleGridViewBin> extends State<DragA
   @override
   Widget build(BuildContext context) {
     return new GridView.builder(
-        physics: physics,
+        physics: widget.scrollable != true ? NeverScrollableScrollPhysics() : ScrollPhysics();
         scrollDirection: Axis.vertical,
         itemCount: widget.itemBins.length,
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
