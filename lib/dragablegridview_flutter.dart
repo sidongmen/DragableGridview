@@ -685,7 +685,6 @@ class DragAbleContentViewState<T extends DragAbleGridViewBin> extends State<Drag
         offstage: widget.dragAbleGridViewBin.offstage,
         child: new Container(
           alignment: Alignment.center,
-          color: Colors.grey,
           key: widget.dragAbleGridViewBin.containerKey,
           child: new OverflowBox(
               maxWidth: widget.screenWidth,
