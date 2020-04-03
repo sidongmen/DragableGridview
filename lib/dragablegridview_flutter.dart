@@ -1,7 +1,13 @@
 import 'dart:async';
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
+import 'package:vector_math/vector_math_64.dart';
 
 import 'package:dragablegridview_flutter/dragablegridviewbin.dart';
 import 'package:flutter/material.dart';
+
+
 
 typedef CreateChild = Widget Function(int position);
 typedef EditChangeListener();
@@ -18,7 +24,7 @@ class DragAbleGridView <T extends DragAbleGridViewBin> extends StatefulWidget{
   final double crossAxisSpacing;
   final double mainAxisSpacing;
   //cross-axis to the main-axis
-  final bool scrollable;
+  final bool scrollable; //add scrollable
   final double childAspectRatio;
   ///编辑开关控制器，可通过点击按钮触发编辑
   final EditSwitchController editSwitchController;
@@ -687,6 +693,7 @@ class DragAbleContentViewState<T extends DragAbleGridViewBin> extends State<Drag
               alignment: Alignment.center,
               child: new Center(
                 child: new Container(
+                  color: Color.fromRGBO(25, 56, 56, 0.5),
                   key: widget.dragAbleGridViewBin.containerKeyChild,
                   transform: new Matrix4.translationValues(widget.dragAbleGridViewBin.dragPointX, widget.dragAbleGridViewBin.dragPointY, 0.0),
                   child: widget.child,
